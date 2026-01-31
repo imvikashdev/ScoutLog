@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+
+    <!-- Primary Meta Tags -->
+    <title>ScoutLog - Precision Route Planner</title>
+    <meta name="title" content="ScoutLog - Precision Route Planner" />
+    <meta
+      name="description"
+      content="ScoutLog - Precision route planning tool for minimalists. Draw routes point-by-point with automatic distance calculation."
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://scoutlog.vercel.app/" />
+    <meta property="og:title" content="ScoutLog - Precision Route Planner" />
+    <meta
+      property="og:description"
+      content="ScoutLog - Precision route planning tool for minimalists. Draw routes point-by-point with automatic distance calculation."
+    />
+    <meta property="og:image" content="assets/images/og-image.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://scoutlog.vercel.app/" />
+    <meta
+      property="twitter:title"
+      content="ScoutLog - Precision Route Planner"
+    />
+    <meta
+      property="twitter:description"
+      content="ScoutLog - Precision route planning tool for minimalists. Draw routes point-by-point with automatic distance calculation."
+    />
+    <meta property="twitter:image" content="assets/images/og-image.jpg" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://scoutlog.vercel.app/" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect fill='%23000' width='32' height='32' rx='6'/><path d='M8 24L16 8L24 24' stroke='%23fff' stroke-width='2' fill='none'/></svg>"
+    />
+
+    <!-- Phosphor Icons -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/homepage.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="nav" aria-label="Main navigation">
+      <a href="/" class="nav__logo">
+        <i class="ph ph-path nav__logo-icon" aria-hidden="true"></i>
+        <span>ScoutLog</span>
+      </a>
+
+      <div class="nav__links">
+        <a href="#features" class="nav__link">Features</a>
+        <a href="#how-it-works" class="nav__link">How It Works</a>
+        <a href="#faq" class="nav__link">FAQ</a>
+      </div>
+
+      <a href="/app" class="nav__cta">
+        Open App
+        <i class="ph ph-arrow-right" aria-hidden="true"></i>
+      </a>
+    </nav>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__bg-pattern" aria-hidden="true"></div>
+
+        <div class="hero__content">
+          <div class="hero__badge">
+            <i class="ph ph-pencil-line" aria-hidden="true"></i>
+            <span>Vector Drawing Engine</span>
+          </div>
+
+          <h1 id="hero-title" class="hero__title">
+            Plan routes with precision.
+          </h1>
+
+          <p class="hero__subtitle">
+            Draw complex routes point-by-point on an interactive map. Automatic
+            distance calculation. Zero tracking. Works offline.
+          </p>
+
+          <a href="/app" class="hero__cta">
+            <span>Start Planning</span>
+            <i class="ph ph-arrow-right hero__cta-icon" aria-hidden="true"></i>
+          </a>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section id="features" class="features" aria-labelledby="features-title">
+        <div class="features__container">
+          <header class="features__header">
+            <h2 id="features-title" class="features__title">
+              Built for precision
+            </h2>
+            <p class="features__subtitle">
+              Every feature designed with minimalists in mind.
+            </p>
+          </header>
+
+          <div class="features__grid">
+            <article class="features__card">
+              <div class="features__card-icon">
+                <i class="ph ph-pencil-line" aria-hidden="true"></i>
+              </div>
+              <h3 class="features__card-title">Vector Drawing</h3>
+              <p class="features__card-description">
+                Plot routes point-by-point. Watch polylines connect as you draw
+                trails, roads, and paths.
+              </p>
+            </article>
+
+            <article class="features__card">
+              <div class="features__card-icon">
+                <i class="ph ph-ruler" aria-hidden="true"></i>
+              </div>
+              <h3 class="features__card-title">Auto Distance</h3>
+              <p class="features__card-description">
+                Haversine algorithm calculates real-world distance as you draw.
+                See updates in real-time.
+              </p>
+            </article>
+
+            <article class="features__card">
+              <div class="features__card-icon">
+                <i class="ph ph-map-pin" aria-hidden="true"></i>
+              </div>
+              <h3 class="features__card-title">Mark Spots</h3>
+              <p class="features__card-description">
+                Pin viewpoints, rest stops, and photo locations. Build your
+                personal map database.
+              </p>
+            </article>
+
+            <article class="features__card">
+              <div class="features__card-icon">
+                <i class="ph ph-floppy-disk" aria-hidden="true"></i>
+              </div>
+              <h3 class="features__card-title">Persistent Storage</h3>
+              <p class="features__card-description">
+                All data saved locally in your browser. No accounts, no cloud,
+                no tracking.
+              </p>
+            </article>
+
+            <article class="features__card">
+              <div class="features__card-icon">
+                <i class="ph ph-wifi-slash" aria-hidden="true"></i>
+              </div>
+              <h3 class="features__card-title">Works Offline</h3>
+              <p class="features__card-description">
+                Plan routes anywhere. Your logs persist when you're back online.
+              </p>
+            </article>
+
+            <article class="features__card">
+              <div class="features__card-icon">
+                <i class="ph ph-code" aria-hidden="true"></i>
+              </div>
+              <h3 class="features__card-title">Lightweight</h3>
+              <p class="features__card-description">
+                Pure HTML, CSS, and JavaScript. No heavy frameworks. Blazing
+                performance.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Demo Section -->
+      <section class="demo" aria-labelledby="demo-title">
+        <div class="demo__container">
+          <header class="demo__header">
+            <h2 id="demo-title" class="demo__title">Point. Click. Route.</h2>
+            <p class="demo__subtitle">
+              Drawing a morning run track on Lodhi Road.
+            </p>
+          </header>
+
+          <div class="demo__preview" aria-label="App preview illustration">
+            <video
+              class="demo__video"
+              autoplay
+              loop
+              muted
+              playsinline
+              poster="assets/images/demo_poster.jpg"
+            >
+              <source src="assets/videos/demo_video.webm" type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works Section -->
+      <section
+        id="how-it-works"
+        class="how-it-works"
+        aria-labelledby="how-title"
+      >
+        <div class="how-it-works__container">
+          <header class="how-it-works__header">
+            <h2 id="how-title" class="how-it-works__title">
+              Three Steps to Perfect Routes
+            </h2>
+            <p class="how-it-works__subtitle">
+              No learning curve. Just intuitive map planning.
+            </p>
+          </header>
+
+          <div class="how-it-works__steps">
+            <div class="how-it-works__step">
+              <div class="how-it-works__step-number">01</div>
+              <div class="how-it-works__step-content">
+                <h3 class="how-it-works__step-title">Click to Start</h3>
+                <p class="how-it-works__step-description">
+                  Hit "Draw Route" and click your starting point on the map. The
+                  crosshair cursor signals you're in drawing mode.
+                </p>
+              </div>
+            </div>
+
+            <div class="how-it-works__step">
+              <div class="how-it-works__step-number">02</div>
+              <div class="how-it-works__step-content">
+                <h3 class="how-it-works__step-title">Plot Your Path</h3>
+                <p class="how-it-works__step-description">
+                  Click waypoints along your route. Watch the polyline connect
+                  automatically while distance updates in real-time.
+                </p>
+              </div>
+            </div>
+
+            <div class="how-it-works__step">
+              <div class="how-it-works__step-number">03</div>
+              <div class="how-it-works__step-content">
+                <h3 class="how-it-works__step-title">Save & Reuse</h3>
+                <p class="how-it-works__step-description">
+                  Double-click or press Enter to finish. Add details and save.
+                  Your route persists in local storage forever.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section id="faq" class="faq" aria-labelledby="faq-title">
+        <div class="faq__container">
+          <header class="faq__header">
+            <h2 id="faq-title" class="faq__title">
+              Frequently Asked Questions
+            </h2>
+            <p class="faq__subtitle">
+              Everything you need to know about ScoutLog.
+            </p>
+          </header>
+
+          <div class="faq__list">
+            <details class="faq__item">
+              <summary class="faq__question">
+                <span>Is ScoutLog really free?</span>
+                <i class="ph ph-caret-down faq__icon" aria-hidden="true"></i>
+              </summary>
+              <div class="faq__answer-wrapper">
+                <div class="faq__answer">
+                  <div class="faq__answer-inner">
+                    Yes, completely free. No sign-ups, no subscriptions, no
+                    hidden fees. ScoutLog runs entirely in your browser with
+                    zero cost to you.
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <details class="faq__item">
+              <summary class="faq__question">
+                <span>Where is my data stored?</span>
+                <i class="ph ph-caret-down faq__icon" aria-hidden="true"></i>
+              </summary>
+              <div class="faq__answer-wrapper">
+                <div class="faq__answer">
+                  <div class="faq__answer-inner">
+                    All your routes and spots are stored in your browser's
+                    LocalStorage. Nothing goes to any server. Your data stays on
+                    your device, always.
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <details class="faq__item">
+              <summary class="faq__question">
+                <span>Does it work offline?</span>
+                <i class="ph ph-caret-down faq__icon" aria-hidden="true"></i>
+              </summary>
+              <div class="faq__answer-wrapper">
+                <div class="faq__answer">
+                  <div class="faq__answer-inner">
+                    The map tiles require an internet connection, but all your
+                    saved routes remain accessible. Once loaded, you can view
+                    and manage your logs offline.
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <details class="faq__item">
+              <summary class="faq__question">
+                <span>How accurate is the distance calculation?</span>
+                <i class="ph ph-caret-down faq__icon" aria-hidden="true"></i>
+              </summary>
+              <div class="faq__answer-wrapper">
+                <div class="faq__answer">
+                  <div class="faq__answer-inner">
+                    ScoutLog uses the Haversine formula, the same algorithm used
+                    by GPS devices. It calculates the great-circle distance
+                    between points, typically accurate within 0.1% for most
+                    routes.
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <details class="faq__item">
+              <summary class="faq__question">
+                <span>Can I export my routes?</span>
+                <i class="ph ph-caret-down faq__icon" aria-hidden="true"></i>
+              </summary>
+              <div class="faq__answer-wrapper">
+                <div class="faq__answer">
+                  <div class="faq__answer-inner">
+                    Export functionality is coming soon! We're working on GPX
+                    and KML export options to make your routes compatible with
+                    other mapping tools.
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <details class="faq__item">
+              <summary class="faq__question">
+                <span>Will you track my location?</span>
+                <i class="ph ph-caret-down faq__icon" aria-hidden="true"></i>
+              </summary>
+              <div class="faq__answer-wrapper">
+                <div class="faq__answer">
+                  <div class="faq__answer-inner">
+                    Never. We request your location only to center the map on
+                    load — and you can deny that. We have zero analytics, zero
+                    cookies, zero tracking. Your privacy matters.
+                  </div>
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA Section -->
+      <section class="final-cta" aria-labelledby="final-cta-title">
+        <div class="final-cta__container">
+          <h2 id="final-cta-title" class="final-cta__title">
+            Ready to plan your next route?
+          </h2>
+          <p class="final-cta__subtitle">
+            No sign-up. No download. Just start drawing.
+          </p>
+          <a href="/app" class="final-cta__button">
+            <span>Open ScoutLog</span>
+            <i class="ph ph-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer__container">
+        <div class="footer__brand">
+          <i class="ph ph-path" aria-hidden="true"></i>
+          <span>ScoutLog</span>
+        </div>
+
+        <div class="footer__tech">
+          <span class="footer__tech-badge">
+            <i class="ph ph-globe" aria-hidden="true"></i>
+            Geolocation API
+          </span>
+          <span class="footer__tech-badge">
+            <i class="ph ph-map-trifold" aria-hidden="true"></i>
+            Leaflet.js
+          </span>
+          <span class="footer__tech-badge">
+            <i class="ph ph-database" aria-hidden="true"></i>
+            LocalStorage
+          </span>
+        </div>
+
+        <p class="footer__copyright">© 2026 ScoutLog. Zero trackers.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Animate FAQ accordion
+      document.querySelectorAll('.faq__item').forEach((details) => {
+        const summary = details.querySelector('summary');
+        const content = details.querySelector('.faq__answer-wrapper');
+
+        summary.addEventListener('click', (e) => {
+          e.preventDefault();
+
+          if (details.open) {
+            // Closing animation
+            const animation = content.animate(
+              [
+                { height: content.scrollHeight + 'px', opacity: 1 },
+                { height: '0px', opacity: 0 },
+              ],
+              { duration: 300, easing: 'ease-out' },
+            );
+
+            animation.onfinish = () => {
+              details.open = false;
+            };
+          } else {
+            // Opening animation
+            details.open = true;
+            const height = content.scrollHeight;
+            content.animate(
+              [
+                { height: '0px', opacity: 0 },
+                { height: height + 'px', opacity: 1 },
+              ],
+              { duration: 300, easing: 'ease-out' },
+            );
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

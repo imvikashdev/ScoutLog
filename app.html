@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+
+    <title>ScoutLog App - Plan Your Route</title>
+    <meta
+      name="description"
+      content="ScoutLog App - Create and save routes on an interactive map. Track distance and duration offline."
+    />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://scoutlog.vercel.app/app" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect fill='%23000' width='32' height='32' rx='6'/><path d='M8 24L16 8L24 24' stroke='%23fff' stroke-width='2' fill='none'/></svg>"
+    />
+
+    <!-- Phosphor Icons -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css"
+    />
+
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+
+    <!-- App Styles -->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+  <body>
+    <!-- Skip Link -->
+    <a href="#map" class="skip-link">Skip to map</a>
+
+    <main class="app">
+      <!-- Full-Screen Map -->
+      <div
+        id="map"
+        class="map"
+        role="application"
+        aria-label="Interactive map for route planning"
+        tabindex="0"
+      ></div>
+
+      <!-- Control Dock (Top Left) -->
+      <nav class="control-dock" aria-label="Map controls">
+        <a href="/" class="control-dock__logo">
+          <i class="ph ph-path control-dock__logo-icon" aria-hidden="true"></i>
+          <span>ScoutLog</span>
+        </a>
+
+        <div class="control-dock__divider" aria-hidden="true"></div>
+
+        <div
+          class="control-dock__actions"
+          role="group"
+          aria-label="Drawing tools"
+        >
+          <button
+            type="button"
+            class="control-dock__btn"
+            id="draw-route-btn"
+            title="Draw Route"
+            aria-pressed="false"
+          >
+            <i
+              class="ph ph-pencil-line control-dock__btn-icon"
+              aria-hidden="true"
+            ></i>
+            <span>Draw Route</span>
+          </button>
+
+          <button
+            type="button"
+            class="control-dock__btn"
+            id="mark-spot-btn"
+            title="Mark Spot"
+            aria-pressed="false"
+          >
+            <i
+              class="ph ph-map-pin control-dock__btn-icon"
+              aria-hidden="true"
+            ></i>
+            <span>Mark Spot</span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Log List (Bottom Left) -->
+      <aside class="log-list" aria-label="Saved logs">
+        <div class="log-list__drag-handle"></div>
+        <header class="log-list__header">
+          <h2 class="log-list__title">Logs</h2>
+          <span class="log-list__count" id="log-count">0 entries</span>
+        </header>
+
+        <ul class="log-list__items" id="log-list-items" role="list">
+          <li class="log-list__empty" id="empty-state">
+            <i
+              class="ph ph-map-trifold log-list__empty-icon"
+              aria-hidden="true"
+            ></i>
+            <p class="log-list__empty-text">
+              No logs yet. Draw a route or mark a spot to begin.
+            </p>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Active Route Panel (Bottom Center) -->
+      <div class="route-panel" id="route-panel" aria-live="polite">
+        <div class="route-panel__distance">
+          <span class="route-panel__distance-value" id="current-distance"
+            >0.00</span
+          >
+          <span class="route-panel__distance-unit">km</span>
+        </div>
+        <div class="route-panel__divider" aria-hidden="true"></div>
+        <div class="route-panel__hint">
+          Press <kbd>Enter</kbd> or double-click to finish
+        </div>
+      </div>
+
+      <!-- Distance Tooltip (Near Cursor) -->
+      <div
+        class="distance-tooltip"
+        id="distance-tooltip"
+        aria-hidden="true"
+      ></div>
+    </main>
+
+    <!-- Log Form Dialog -->
+    <dialog class="log-form" id="log-form" aria-labelledby="form-title">
+      <header class="log-form__header">
+        <div>
+          <h2 class="log-form__title" id="form-title">Save Log</h2>
+        </div>
+        <span class="log-form__type-badge" id="form-type-badge">
+          <i class="ph ph-path" aria-hidden="true"></i>
+          <span>Route</span>
+        </span>
+        <button
+          type="button"
+          class="log-form__close"
+          id="form-close-btn"
+          aria-label="Close form"
+        >
+          <i class="ph ph-x" aria-hidden="true"></i>
+        </button>
+      </header>
+
+      <form id="log-entry-form" novalidate>
+        <div class="log-form__content">
+          <!-- Title -->
+          <div class="form-field">
+            <label for="log-title" class="form-field__label">Title</label>
+            <input
+              type="text"
+              id="log-title"
+              name="title"
+              class="form-field__input"
+              placeholder="Morning Run, Trail Exploration..."
+              required
+            />
+          </div>
+
+          <!-- Distance (Read-only for routes) -->
+          <div class="form-field" id="distance-field">
+            <label for="log-distance" class="form-field__label">Distance</label>
+            <div class="form-field__unit">
+              <input
+                type="text"
+                id="log-distance"
+                name="distance"
+                class="form-field__input form-field__input--readonly"
+                readonly
+                aria-describedby="distance-note"
+              />
+              <span class="form-field__unit-label">km</span>
+            </div>
+            <small
+              id="distance-note"
+              style="
+                font-size: var(--text-xs);
+                color: var(--ink-muted);
+                margin-top: var(--space-1);
+                display: block;
+              "
+            >
+              Auto-calculated from your route
+            </small>
+          </div>
+
+          <!-- Duration (User input for routes) -->
+          <div class="form-field" id="duration-field">
+            <label for="log-duration" class="form-field__label">Duration</label>
+            <div class="form-field__unit">
+              <input
+                type="number"
+                id="log-duration"
+                name="duration"
+                class="form-field__input"
+                placeholder="0"
+                min="0"
+              />
+              <span class="form-field__unit-label">min</span>
+            </div>
+          </div>
+
+          <!-- Calculated Pace (for routes) -->
+          <div class="form-field" id="pace-field">
+            <div class="form-field__output">
+              <span class="form-field__output-label">Avg. Pace</span>
+              <span class="form-field__output-value" id="pace-output"
+                >-- min/km</span
+              >
+            </div>
+          </div>
+
+          <!-- Notes -->
+          <div class="form-field">
+            <label for="log-notes" class="form-field__label">Notes</label>
+            <textarea
+              id="log-notes"
+              name="notes"
+              class="form-field__textarea"
+              placeholder="Add any notes about this log..."
+              rows="3"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button
+            type="button"
+            class="form-actions__btn form-actions__btn--secondary"
+            id="form-cancel-btn"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            class="form-actions__btn form-actions__btn--primary"
+          >
+            Save Log
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <!-- Delete Confirmation Dialog -->
+    <dialog class="delete-dialog" id="delete-dialog">
+      <div class="delete-dialog__content">
+        <div class="delete-dialog__icon">
+          <i class="ph ph-warning-circle" aria-hidden="true"></i>
+        </div>
+        <h3 class="delete-dialog__title">Delete Log?</h3>
+        <p class="delete-dialog__message" id="delete-message">
+          This action cannot be undone.
+        </p>
+        <div class="delete-dialog__actions">
+          <button
+            type="button"
+            class="delete-dialog__btn delete-dialog__btn--cancel"
+            id="delete-cancel-btn"
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            class="delete-dialog__btn delete-dialog__btn--delete"
+            id="delete-confirm-btn"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Location Permission Overlay -->
+    <div class="location-overlay" id="location-overlay">
+      <div class="location-overlay__card">
+        <div class="location-overlay__icon">
+          <i class="ph ph-map-pin-line" aria-hidden="true"></i>
+        </div>
+        <h2 class="location-overlay__title">Enable Location</h2>
+        <p class="location-overlay__description">
+          Allow location access to center the map on your position.
+        </p>
+        <button
+          type="button"
+          class="location-overlay__btn"
+          id="request-location-btn"
+        >
+          <i class="ph ph-crosshair" aria-hidden="true"></i>
+          Allow Location
+        </button>
+        <button
+          type="button"
+          class="location-overlay__skip"
+          id="use-default-btn"
+        >
+          Skip · Use default location
+        </button>
+      </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+
+    <!-- App JavaScript -->
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
