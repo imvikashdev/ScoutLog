@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a" />
+      <stop offset="100%" style="stop-color:#1e293b" />
+    </linearGradient>
+    <linearGradient id="routeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6" />
+      <stop offset="100%" style="stop-color:#8b5cf6" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)" />
+
+  <!-- Grid pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="1" opacity="0.5" />
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)" />
+
+  <!-- Decorative Route Lines (background) -->
+  <g opacity="0.1">
+    <path d="M 800 100 Q 900 150, 950 200 T 1100 350" stroke="#3b82f6" stroke-width="4" fill="none" />
+    <path d="M 750 80 Q 850 130, 920 180 T 1050 380" stroke="#8b5cf6" stroke-width="3" fill="none" />
+  </g>
+
+  <!-- Main Route Illustration -->
+  <g transform="translate(680, 180)">
+    <!-- Route path -->
+    <path d="M 50 200 L 120 150 L 200 180 L 280 100 L 380 140 L 450 80"
+      stroke="url(#routeGradient)" stroke-width="4" fill="none" stroke-linecap="round"
+      stroke-linejoin="round" />
+
+    <!-- Waypoint dots -->
+    <circle cx="50" cy="200" r="10" fill="#3b82f6" />
+    <circle cx="50" cy="200" r="5" fill="#fff" />
+
+    <circle cx="120" cy="150" r="8" fill="#4f46e5" />
+    <circle cx="120" cy="150" r="4" fill="#fff" />
+
+    <circle cx="200" cy="180" r="8" fill="#6366f1" />
+    <circle cx="200" cy="180" r="4" fill="#fff" />
+
+    <circle cx="280" cy="100" r="8" fill="#7c3aed" />
+    <circle cx="280" cy="100" r="4" fill="#fff" />
+
+    <circle cx="380" cy="140" r="8" fill="#8b5cf6" />
+    <circle cx="380" cy="140" r="4" fill="#fff" />
+
+    <circle cx="450" cy="80" r="10" fill="#a855f7" />
+    <circle cx="450" cy="80" r="5" fill="#fff" />
+
+    <!-- Distance label -->
+    <rect x="180" y="230" width="120" height="36" rx="8" fill="#1e293b" />
+    <text x="240" y="255" font-family="system-ui, -apple-system, sans-serif" font-size="16"
+      font-weight="600" fill="#fff" text-anchor="middle">5.2 km</text>
+  </g>
+
+  <!-- Logo Icon -->
+  <g transform="translate(80, 220)">
+    <rect width="64" height="64" rx="12" fill="#fff" />
+    <path d="M16 48 L32 16 L48 48" stroke="#0f172a" stroke-width="4" fill="none"
+      stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- Brand Name -->
+  <text x="170" y="268" font-family="system-ui, -apple-system, sans-serif" font-size="48"
+    font-weight="700" fill="#fff">ScoutLog</text>
+
+  <!-- Tagline -->
+  <text x="80" y="330" font-family="system-ui, -apple-system, sans-serif" font-size="24"
+    fill="#94a3b8">Plan routes with precision</text>
+
+  <!-- Features -->
+  <g transform="translate(80, 380)">
+    <g>
+      <circle cx="10" cy="10" r="8" fill="#3b82f6" opacity="0.3" />
+      <circle cx="10" cy="10" r="4" fill="#3b82f6" />
+      <text x="30" y="15" font-family="system-ui, -apple-system, sans-serif" font-size="16"
+        fill="#64748b">Free Forever</text>
+    </g>
+    <g transform="translate(160, 0)">
+      <circle cx="10" cy="10" r="8" fill="#8b5cf6" opacity="0.3" />
+      <circle cx="10" cy="10" r="4" fill="#8b5cf6" />
+      <text x="30" y="15" font-family="system-ui, -apple-system, sans-serif" font-size="16"
+        fill="#64748b">Works Offline</text>
+    </g>
+    <g transform="translate(340, 0)">
+      <circle cx="10" cy="10" r="8" fill="#22c55e" opacity="0.3" />
+      <circle cx="10" cy="10" r="4" fill="#22c55e" />
+      <text x="30" y="15" font-family="system-ui, -apple-system, sans-serif" font-size="16"
+        fill="#64748b">No Sign-up</text>
+    </g>
+  </g>
+
+  <!-- URL -->
+  <text x="80" y="580" font-family="system-ui, -apple-system, sans-serif" font-size="18"
+    fill="#475569">scoutlog.imvikash.dev</text>
+</svg>

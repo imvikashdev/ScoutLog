@@ -1,0 +1,11 @@
+# robots.txt for ScoutLog
+# https://scoutlog.imvikash.dev
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://scoutlog.imvikash.dev/sitemap.xml
+
+# Crawl-delay (optional, for rate limiting)
+Crawl-delay: 1
